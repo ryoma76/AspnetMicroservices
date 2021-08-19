@@ -24,12 +24,15 @@ namespace Basket.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //Redis Configuration
             services.AddStackExchangeRedisCache(option =>
             {
                 option.Configuration = Configuration.GetValue<string>("CacheSettings:ConnectionString");
             });
+            //General Configuration
             services.AddScoped<IBasketRepository, BasketRepository>();
-
+            services.AddAutoMapper(typeof(Startup));
+            //Grpc Configuration
             services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>
                 (o => o.Address = new Uri(Configuration["GrpcSettings:DiscountUrl"]));
             services.AddScoped<DiscountGrpcService>();
