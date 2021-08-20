@@ -12,7 +12,7 @@
       ],
       "UpstreamPathTemplate": "/Catalog",  // --> Uri esposta
       "UpstreamHttpMethod": [ "GET", "POST", "PUT" ]  //---> i verbi si mettono x tutti gli uri uguali che rispondono a verbi differenti
-     // "FileCacheOptions": { "TtlSeconds": 30 }
+      "FileCacheOptions": { "TtlSeconds": 30 }
     },
     {
       "DownstreamPathTemplate": "/api/v1/Catalog/{id}",
@@ -73,14 +73,14 @@
         }
       ],
       "UpstreamPathTemplate": "/Basket/Checkout",
-      "UpstreamHttpMethod": [ "POST" ]/*,
+      "UpstreamHttpMethod": [ "POST" ],
       "RateLimitOptions": {
         "ClientWhitelist": [],
         "EnableRateLimiting": true,
         "Period": "3s",
         "PeriodTimespan": 1,
         "Limit": 1
-      }*/
+      }
     },
     //Discount API
     {
@@ -123,6 +123,5 @@
   ],
   "GlobalConfiguration": {
     "BaseUrl": "http://localhost:5010"  // --> Base Uri esposta
-  },
-  ]
+  }
 }
